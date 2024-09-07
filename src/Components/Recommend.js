@@ -13,21 +13,21 @@ const Recommend = () => {
 
    const fetchRecommend= async()=>{
     const data= await fetch("https://dummyjson.com/products");
-    // const data2=await fetch("https://fakestoreapi.com/products");
+    const data2=await fetch("https://fakestoreapi.com/products");
     const json= await data.json();
-    // const json2=await data2.json();
-    setRecommend(json.products.slice(0,loadrecommend));
-    // setLoadRecommend(recommend.slice(0,9))
+    const json2=await data2.json();
+    setRecommend(json.products.concat(json2).slice(0,loadrecommend));
+    // setLoadRecommend(recommend.concat(json2).slice(0,9))
     console.log(json)
    }
 
   return (
     <div className='md:-mt-48'>
-     <h1 className='font-bold text-4xl text-orange-500 m-8'>Recommended</h1>
-    <div className='md:flex flex-wrap m-8'>
+     <h1 className='font-bold text-center md:text-left text-4xl text-orange-500 m-8'>Recommended</h1>
+    <div className='flex flex-wrap justify-center'>
         {
           recommend.map((product)=>{
-            return <Link to={'/productdetails'} state={product}> <ProductCard image={product.thumbnail || product.image} name={product.title} price={product.price} /></Link>
+            return <Link to={'/productdetails'} state={product} key={product.id}> <ProductCard image={product.thumbnail || product.image} name={product.title} price={product.price} /></Link>
           })
         }
     </div>

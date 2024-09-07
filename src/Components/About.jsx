@@ -1,33 +1,11 @@
 import React from 'react'
 
-{/*const About = () => {
+const About = () => {
   return (
-    <div>About</div>
+    <div className='border border-slate-200 mt-20 ml-2 mr-2 md:m-20 md:p-20 shadow-lg'><h1 className='text-2xl text-center font-bold m-6'>This is About Section</h1>
+    <p className=' text-lg text-center p-4'>This section doesn't contain any logic or technical thing So, the developer has not built this section But in future there is some possibility to build this..</p>
+    </div>
   )
-}*/}
-
-class About extends React.Component{
-  constructor(props){
-      super(props)
-
-      this.state={
-        count:1
-      }
-  }
-  
-  render(){
-    return(
-      <div>
-        {this.props.name}
-        <h1>{this.state.count}</h1>
-        <button onClick={()=>{
-          this.setState({
-            count1:this.state.count+1,
-          })
-        }}>increment</button>
-      </div>
-    )
-  }
 }
 
 export default About

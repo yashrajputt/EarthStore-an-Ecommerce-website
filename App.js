@@ -1,4 +1,4 @@
-import React from "react"
+import React, { createContext, useEffect, useState } from "react"
 import ReactDOM from 'react-dom'
 import Header from "./src/Components/Header";
 import Front from "./src/Components/Front";
@@ -12,16 +12,23 @@ import Footer from "./src/Components/Footer";
 import Body from "./src/Components/Body";
 import Header2 from "./src/Components/Header2";
 import Contact from "./src/Components/Contact";
+import { usercontext } from "./src/utils/usercontext";
+
 
 const App=()=>{
     
     const location=useLocation()
-    return <div>
-        {/* <Header/> */}
+    const[number,setNumber]=useState(0);
+    return (
+        <usercontext.Provider value={{value1:number, setNumber}} >
+        <div>
         { location.pathname=="/"? <Front/>:<Header2/>}
         <Outlet/>
         <Footer/>
     </div>
+    </usercontext.Provider>
+    )
+   
     
 }
 const Approute=createBrowserRouter([{
@@ -48,9 +55,6 @@ const Approute=createBrowserRouter([{
         path:"/productdetails",
         element:<ProductDetails/>    }],
  
-},{
-    path:"/esehi",
-    element: <Contact/>
 }])
 
 const root= ReactDOM.createRoot(document.getElementById("root"));
