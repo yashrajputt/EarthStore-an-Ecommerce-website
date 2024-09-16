@@ -13,6 +13,7 @@ import Body from "./src/Components/Body";
 import Header2 from "./src/Components/Header2";
 import Contact from "./src/Components/Contact";
 import { usercontext } from "./src/utils/usercontext";
+import { Provider } from "react-redux";
 
 
 const App=()=>{
@@ -20,6 +21,7 @@ const App=()=>{
     const location=useLocation()
     const[number,setNumber]=useState(0);
     return (
+        <Provider store={appStore}>
         <usercontext.Provider value={{value1:number, setNumber}} >
         <div>
         { location.pathname=="/"? <Front/>:<Header2/>}
@@ -27,6 +29,7 @@ const App=()=>{
         <Footer/>
     </div>
     </usercontext.Provider>
+    </Provider>
     )
    
     
